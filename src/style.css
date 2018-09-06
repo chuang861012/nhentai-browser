@@ -1,0 +1,238 @@
+*,html{
+    box-sizing: border-box;
+    font-size: 16px;
+    margin:0;
+    padding: 0;
+}
+body{
+    background-color: #2d3436 !important;
+}
+.container{
+    margin:2rem auto;
+    max-width: 100% !important;
+}
+.loading{
+    color:#fff;
+    text-align: center;
+    margin:2rem 0;
+}
+a:hover{
+    text-decoration: none !important;
+}
+.input-group{
+    margin:.5rem auto;
+    width:60%;
+}
+.search-bar{
+    max-width: 20rem;
+}
+.btn-group-wrap{
+    text-align: center;
+}
+.items-container{
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    margin:1rem 0;
+    color:#fff;
+    background-color: #636e72;
+    padding:.3rem;
+    border-radius: 1rem;
+    justify-content: center;
+}
+.item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width:13rem;
+    height:20rem;
+    margin:.3rem;
+    padding:.5rem;
+    cursor: pointer;
+    border-radius: .5rem;
+    color:#fff;
+}
+.item:hover{
+    background-color: rgba(120, 130, 134,1.0);
+}
+.item-title{
+    font-size: .9rem;
+    height: 15%;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: Microsoft JhengHei;
+}
+.item-img{
+    max-width: 11rem;
+    max-height: 18rem;
+}
+@media (max-width:800px){
+    .items{
+        flex-direction: column;
+    }
+    .item{
+        flex-direction: row;
+        width:100%;
+        height: 11rem;
+    }
+    .item-img{
+        max-height: 10rem;
+    }
+    .item-title{
+        order:2;
+        font-size: 1.2rem;
+        height: 100%;
+        font-weight: 700;
+        padding:0 .5rem;
+    }
+}
+
+.book-container{
+    display: flex;
+    color:#fff;
+    padding:1.5rem;
+}
+.book-cover{
+    width:48%;
+}
+.book-cover-img{
+    max-width: 100%;
+}
+.book-detail{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+}
+.book-detail > h1{
+    font-size: 1.5rem;
+}
+.book-detail > h2{
+    font-size: 1.3rem;
+}
+.book-tag-type{
+    color: #d9d9d9;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.book-tag-tag{
+    color: #d9d9d9;
+    background: #4d4d4d;
+    font-weight: 700;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 2px 6px;
+    margin:3px;
+    font-size: 1rem;
+}
+.book-text{
+    margin-top:auto;
+    font-size: 1rem;
+}
+@media (max-width:800px){
+    .book-container{
+        flex-direction: column;
+        align-items: center;
+        border-bottom:1px solid #fff; 
+        margin-bottom:.5rem;
+        padding:2px 2px;
+    }
+    .book-cover{
+        width:80%;
+    }
+    .book-detail{
+        padding-left: 0;
+        margin-top:1rem;
+    }
+    .book-detail > h1{
+        font-size: 1.3rem;
+    }
+    .book-detail > h2{
+        font-size: 1.1rem;
+    }
+    .book-text{
+        font-size: .75rem;
+        text-align: end;
+    }
+}
+.img-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.img-box{
+    margin:.5rem;
+    width: 200px;
+    
+}
+.img-box > img {
+    max-width: 200px;
+    max-height: 300px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #535c68;
+}
+@media (max-width:800px){
+    .img-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .img-box{
+        width: 80%;
+        height: auto;
+    }
+    .img-box > img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+.Back-btn{
+    position: absolute;
+    top:1rem;
+    left: 1rem;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    background-color: transparent;
+    color:#fff;
+    font-size: 2rem;
+    width:3rem;
+    height: 3rem;
+    align-self: flex-start;
+}
+
+.reader-img-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width:min-content;
+    margin:auto;
+}
+
+.reader-img-left{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width:50%;
+    background-color:transparent;
+    z-index: 1;
+}
+.reader-img-right{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width:50%;
+    background-color:transparent;
+    z-index: 1;
+}
+.reader-img-counter{
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    margin:1rem 0;
+}
