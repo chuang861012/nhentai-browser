@@ -12,6 +12,8 @@ class GalleryReader extends Component{
 
         this.computeImageUrl = this.computeImageUrl.bind(this);
         this.computePageLink = this.computePageLink.bind(this);
+        this.preloadImage = this.preloadImage.bind(this);
+        this.preloadArr = [];
     }
 
     componentWillMount(){
@@ -57,6 +59,24 @@ class GalleryReader extends Component{
         }
     }
 
+    preloadImage(){
+        this.preloadArr.pop();
+        const current_page = parseInt(this.state.page);
+        console.log(current_page);
+        
+        let page = parseInt(this.state.page) + this.preloadArr.length + 1;
+        while(page<=this.state.images.length && this.preloadArr.length<3){
+            
+            const image_type = {j:"jpg",p:"png",g:"gif"};
+            const this_type = this.state.images[page-1].t;
+
+            let image = new Image();
+            image.src = `https://i.nhentai.net/galleries/${this.state.media_id}/${page}.${image_type[this_type]}`;
+            this.preloadArr.unshift(image);
+            page = current_page + this.preloadArr.length + 1;
+        }
+    }
+
     render(){
         if(!this.state.images){
             return (
@@ -78,7 +98,7 @@ class GalleryReader extends Component{
                     <Link to={{pathname:this.computePageLink(parseInt(this.state.page)+1),backpath:this.state.backpath}}>
                         <div className="reader-img-right" />
                     </Link>
-                    <ImageLoader src={this.computeImageUrl()}/>
+                    <ImageLoader src={this.computeImageUrl()} onLoad={this.preloadImage}/>
                 </div>
                 <p className="reader-img-counter">{this.state.page} / {this.state.images.length}</p>
             </div>
