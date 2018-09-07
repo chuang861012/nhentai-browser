@@ -53,12 +53,12 @@ class GalleryList extends Component{
 
     renderGallery(galleryData){
         const cover_type = {j:"jpg",p:"png",g:"gif"};
-        const this_type = galleryData.images.cover.t;
+        const this_type = galleryData.images.thumbnail.t;
         return (
             <Link to={{pathname:`/g/${galleryData.id}`,state:{backpath:this.computePath()}}} key={galleryData.id}>
                 <div className="item">
                     <h1 className="item-title">{galleryData.title.english}</h1>
-                    <img className="item-img" src={`https://t.nhentai.net/galleries/${galleryData.media_id}/cover.${cover_type[this_type]}`}/>
+                    <img className="item-img" src={`https://t.nhentai.net/galleries/${galleryData.media_id}/thumb.${cover_type[this_type]}`}/>
                 </div>
             </Link>
         );

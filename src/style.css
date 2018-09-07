@@ -71,7 +71,7 @@ a:hover{
 }
 .item-img{
     max-width: 11rem;
-    max-height: 18rem;
+    max-height: 85%;
 }
 @media (max-width:800px){
     .items{
