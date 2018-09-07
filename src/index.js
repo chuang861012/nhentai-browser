@@ -10,7 +10,7 @@ import GalleryPage from "./components/gallery_page";
 import GalleryReader from "./components/gallery_reader";
 import reducers from './reducers';
 
-import _ from "./style.css"
+import _ from "./style.css";
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 

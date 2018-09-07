@@ -6,6 +6,8 @@ import {searchNhentai} from "../../actions";
 import {Link} from "react-router-dom";
 import {API_URL} from "../../data.js";
 
+import ImageLoader from "../../components/image-loader";
+
 class GalleryList extends Component{
     constructor(props){
         super(props);
@@ -58,7 +60,7 @@ class GalleryList extends Component{
             <Link to={{pathname:`/g/${galleryData.id}`,state:{backpath:this.computePath()}}} key={galleryData.id}>
                 <div className="item">
                     <h1 className="item-title">{galleryData.title.english}</h1>
-                    <img className="item-img" src={`https://t.nhentai.net/galleries/${galleryData.media_id}/thumb.${cover_type[this_type]}`}/>
+                    <ImageLoader src={`https://t.nhentai.net/galleries/${galleryData.media_id}/thumb.${cover_type[this_type]}`} className="item-img" />
                 </div>
             </Link>
         );

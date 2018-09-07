@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import LazyLoad from 'react-lazyload';
 import {Link} from "react-router-dom";
 
+import ImageLoader from "../../components/image-loader";
+
 class GalleryImages extends Component{
     constructor(props){
         super(props);
@@ -18,7 +20,7 @@ class GalleryImages extends Component{
             <Link to={{pathname:`/g/${this.props.id}/${index+1}`,state:{ media_id: this.props.media_id,images:this.props.images,backpath:this.props.backpath }}} key={index} >
                 <div className="img-box" >
                     <LazyLoad height={'100%'}>
-                        <img src={`https://t.nhentai.net/galleries/${this.props.media_id}/${index+1}t.${image_type[this_type]}`}/>
+                        <ImageLoader src={`https://t.nhentai.net/galleries/${this.props.media_id}/${index+1}t.${image_type[this_type]}`}/>
                     </LazyLoad>
                 </div>
             </Link>

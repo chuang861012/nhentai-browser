@@ -3,6 +3,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {getBookById} from "../../actions/index";
 
+import ImageLoader from "../../components/image-loader";
+
 class GalleryDetail extends Component{
     constructor(props){
         super(props);
@@ -53,7 +55,7 @@ class GalleryDetail extends Component{
         return (
             <div className="book-container">
                 <div className="book-cover">
-                    <img src={this.computeCoverUrl()} className="book-cover-img"></img>
+                    <ImageLoader src={this.computeCoverUrl()}/>
                 </div>
                 <div className="book-detail">
                     <h1>{this.props.book.title.english}</h1>

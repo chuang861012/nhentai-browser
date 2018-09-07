@@ -4,6 +4,8 @@ import {getBookById} from "../actions/index";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
+import ImageLoader from "../components/image-loader";
+
 class GalleryReader extends Component{
     constructor(props){
         super(props);
@@ -58,9 +60,9 @@ class GalleryReader extends Component{
     render(){
         if(!this.state.images){
             return (
-                <div>
+                <p>
                     Loading...
-                </div>
+                </p>
             );
         }
         return (
@@ -76,7 +78,7 @@ class GalleryReader extends Component{
                     <Link to={{pathname:this.computePageLink(parseInt(this.state.page)+1),backpath:this.state.backpath}}>
                         <div className="reader-img-right" />
                     </Link>
-                    <img src={this.computeImageUrl()} />
+                    <ImageLoader src={this.computeImageUrl()}/>
                 </div>
                 <p className="reader-img-counter">{this.state.page} / {this.state.images.length}</p>
             </div>
