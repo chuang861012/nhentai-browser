@@ -6,7 +6,9 @@ export const GET_BOOK = "GET_BOOK";
 
 export function searchNhentai(input_url = `${API_URL}/search?`, page = 1) {
     const url = `${input_url}&page=${page}`;
-    const payload = axios.get(url);
+    const payload = axios.get(url,{headers:{
+        "Accept-Encoding":"gzip"
+    }});
 
     return {
         meta:{page},

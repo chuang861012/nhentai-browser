@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
     entry: ['./src/index.js'],
@@ -18,9 +17,12 @@ const config = {
                 test: /\.js|jsx$/
             },
             {
-                loader: ExtractTextPlugin.extract({
-                    use: "css-loader"
-                }),
+                use: ["style-loader", {
+                    loader: "css-loader",
+                    options: {
+                        minimize: true
+                    }
+                }],
                 test: /\.css$/
             }
         ]
@@ -29,8 +31,7 @@ const config = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
-        }),
-        new ExtractTextPlugin("style.css")
+        })
     ]
 }
 
