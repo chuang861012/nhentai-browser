@@ -10,6 +10,7 @@ body{
 .container{
     margin:2rem auto;
     max-width: 100% !important;
+    padding:0;
 }
 .loading{
     color:#fff;
@@ -68,6 +69,7 @@ a:hover{
     overflow: hidden;
     text-decoration: none;
     font-family: Microsoft JhengHei;
+    display:inline-block;
 }
 .item-img{
     max-width: 11rem;
@@ -82,15 +84,20 @@ a:hover{
         width:100%;
         height: 11rem;
     }
+    .item>div{
+        height: 100%;
+    }
     .item-img{
-        max-height: 10rem;
+        max-width: 100%;
+        max-height: 100%;
     }
     .item-title{
+        height: 100%;
         order:2;
         font-size: 1.2rem;
-        height: 100%;
         font-weight: 700;
-        padding:0 .5rem;
+        padding:.2rem .5rem;
+        flex:0 1 66%;
     }
 }
 
@@ -250,4 +257,19 @@ a:hover{
 .img-loader-error{
     font-size: 1rem;
     color:#fff;
+}
+
+@media(max-width:800px){
+    .reader-img-container{
+        width:100vw;
+    }
+    .reader-img-container img{
+        max-width:100%;
+        height: auto;
+    }
+}
+
+.imageloader img{
+    display: block;
+    margin:0 auto;
 }
