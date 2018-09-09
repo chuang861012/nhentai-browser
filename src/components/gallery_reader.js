@@ -13,10 +13,12 @@ class GalleryReader extends Component{
         this.computeImageUrl = this.computeImageUrl.bind(this);
         this.computePageLink = this.computePageLink.bind(this);
         this.preloadImage = this.preloadImage.bind(this);
-        this.preloadArr = [];
+        this.preloadArr = []; // the preload image queue
     }
 
     componentWillMount(){
+        // if no data in state , go fetch data by id
+        // if there's data remains , set it to the state
         if(!this.props.location.state){
             this.props.getBookById(this.props.match.params.id);
         } else{
@@ -26,6 +28,7 @@ class GalleryReader extends Component{
                 media_id:this.props.location.state.media_id
             });
         }
+        // back path setting
         try{
             const backpath = this.props.location.state.backpath;
             this.setState({backpath});
@@ -35,6 +38,7 @@ class GalleryReader extends Component{
     }
 
     componentWillReceiveProps(nextProps){
+        // state setting while receive props from actions
         this.setState({
             images:nextProps.images,
             page:nextProps.match.params.page,
@@ -43,6 +47,7 @@ class GalleryReader extends Component{
     }
 
     computeImageUrl(){
+        // make the image src url to show it 
         const page = this.state.page;
         const image_type = {j:"jpg",p:"png",g:"gif"};
         const this_type = this.state.images[page-1].t;
@@ -51,6 +56,7 @@ class GalleryReader extends Component{
     }
 
     computePageLink(page){
+        // make the url of back path
         const gallery_length = this.state.images.length;
         if(page<1 || page>gallery_length){
             return `/g/${this.props.id}`;
@@ -60,10 +66,12 @@ class GalleryReader extends Component{
     }
 
     preloadImage(){
+        // image preloading function
+        // up to 3 images
         this.preloadArr.pop();
-        const current_page = parseInt(this.state.page);
+        const current_page = parseInt(this.state.page); // the page user at
         
-        let page = parseInt(this.state.page) + this.preloadArr.length + 1;
+        let page = parseInt(this.state.page) + this.preloadArr.length + 1; // page to preload
         while(page<=this.state.images.length && this.preloadArr.length<3){
             
             const image_type = {j:"jpg",p:"png",g:"gif"};
@@ -77,6 +85,7 @@ class GalleryReader extends Component{
     }
 
     render(){
+        // show a loading text while fetching data
         if(!this.state.images){
             return (
                 <p>

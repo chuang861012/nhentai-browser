@@ -7,6 +7,8 @@ import {Link} from "react-router-dom";
 export default class GalleryPage extends Component {
     
     componentWillMount(){
+      // if contains a back path , set it
+      // if no back path , set it back to root path "/"
       try{
         const backpath = this.props.location.state.backpath;
         this.setState({backpath});

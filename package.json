@@ -6,7 +6,8 @@
     "scripts": {
         "start": "webpack-dev-server --mode development --open",
         "build": "rmdir /s/q dist & webpack -p --mode production",
-        "test": "jest --watchAll"
+        "test": "jest",
+        "test:watch": "jest --watchAll"
     },
     "repository": {
         "type": "git",

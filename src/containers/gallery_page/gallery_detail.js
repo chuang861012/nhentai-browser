@@ -14,16 +14,19 @@ class GalleryDetail extends Component{
     }
 
     componentWillMount(){
+        // fetch data by id when user enter this page
         this.props.getBookById(this.props.id);
     }
 
     computeCoverUrl(){
+        // make cover image scr url
         const cover_type = {j:"jpg",p:"png"};
         const this_type = this.props.book.images.cover.t;
         return `https://t.nhentai.net/galleries/${this.props.book.media_id}/cover.${cover_type[this_type]}`;
     }
 
     parseTagsContent(tag_entry){
+        // make the details content (tags)
         const key = tag_entry[0];
         const tags = tag_entry[1];
         return (
@@ -37,6 +40,7 @@ class GalleryDetail extends Component{
     }
 
     renderTags(tags){
+        // change the tag array into useful object
         const tags_dict = {};
         tags.forEach(tag=>{
             if(!tags_dict[tag.type]){

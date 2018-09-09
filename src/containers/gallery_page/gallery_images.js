@@ -10,9 +10,9 @@ class GalleryImages extends Component{
         super(props);
 
         this.renderImages = this.renderImages.bind(this);
-        
     }
 
+    //render each image , use lazyload and set Link to the page reader for each page
     renderImages(image,index){
         const image_type = {j:"jpg",p:"png"};
         const this_type = image.t;

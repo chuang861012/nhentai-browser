@@ -4,6 +4,7 @@ import {API_URL} from "../data";
 export const SEARCH_NHENTAI = "SEARCH_NHENTAI";
 export const GET_BOOK = "GET_BOOK";
 
+// fetch search result
 export function searchNhentai(input_url = `${API_URL}/search?`, page = 1) {
     const url = `${input_url}&page=${page}`;
     const payload = axios.get(url);
@@ -15,6 +16,7 @@ export function searchNhentai(input_url = `${API_URL}/search?`, page = 1) {
     };
 }
 
+// fetch book data by id
 export function getBookById(id){
     const url = `${API_URL}/book?id=${id}`;
     const payload = axios.get(url);

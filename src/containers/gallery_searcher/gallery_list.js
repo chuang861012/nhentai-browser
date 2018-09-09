@@ -17,6 +17,8 @@ class GalleryList extends Component{
     }
 
     componentWillMount(){
+        // fetch the data while user enter
+        // search the query or the all page
         let url;
         if(this.props.query && this.props.query!==""){
             url = `${API_URL}/search?query=${this.props.query}`;
@@ -24,14 +26,17 @@ class GalleryList extends Component{
         else{
             url = `${API_URL}/search?`;
         }
+        // specify the page at
         const page = this.props.page || 1; 
         this.props.searchNhentai(url,page);
     }
 
     componentDidUpdate(prev){
+        // check if at same page
         if(prev.query === this.props.query && prev.page===this.props.page){
             return false;
         }
+        // otherwise update page data
         let url;
         if(this.props.query && this.props.query!==""){
             url = `${API_URL}/search?query=${this.props.query}`;
