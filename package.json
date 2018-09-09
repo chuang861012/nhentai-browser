@@ -8,6 +8,10 @@
         "build": "rmdir /s/q dist & webpack -p --mode production",
         "test": "jest --watchAll"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chuang861012/nhentai-browser.git"
+    },
     "author": "chuang861012",
     "license": "MIT",
     "jest": {
