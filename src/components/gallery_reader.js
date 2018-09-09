@@ -62,7 +62,6 @@ class GalleryReader extends Component{
     preloadImage(){
         this.preloadArr.pop();
         const current_page = parseInt(this.state.page);
-        console.log(current_page);
         
         let page = parseInt(this.state.page) + this.preloadArr.length + 1;
         while(page<=this.state.images.length && this.preloadArr.length<3){
