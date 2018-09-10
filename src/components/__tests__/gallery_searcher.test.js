@@ -2,8 +2,8 @@ import React from "react";
 import {shallow} from "enzyme";
 import GallerySearcher from "../gallery_searcher";
 
-import GalleryList from "../../containers/gallery_searcher/gallery_list";
-import SeachBar from "../../containers/gallery_searcher/search_bar";
+import GalleryList from "../../containers/gallery_list";
+import SeachBar from "../../containers/search_bar";
 
 let wrapped;
 

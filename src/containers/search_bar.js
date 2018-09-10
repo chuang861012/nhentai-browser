@@ -1,8 +1,9 @@
 import React,{Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {searchNhentai} from "../../actions/index";
+import {searchNhentai} from "../actions";
 import {withRouter} from 'react-router-dom'
+import searchIcon from "../img/musica-searcher.svg";
 
 class SearchBar extends Component{
       
@@ -33,9 +34,7 @@ class SearchBar extends Component{
                     className="form-control"
                     value={this.state.term}
                     onChange={this.onInputChange}/>
-                <span className="input-group-btn">
-                    <button type="submit" className="btn btn-secondary">搜尋</button>
-                </span>
+                <button type="submit" className="btn searchbar-btn"><img src={searchIcon} className="btn-svg"/></button>
             </form>
         );
     };

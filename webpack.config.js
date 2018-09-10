@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 const config = {
     entry: ['./src/index.js'],
@@ -41,6 +42,9 @@ const config = {
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: "async"
         })
     ]
 }

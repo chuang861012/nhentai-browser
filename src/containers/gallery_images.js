@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import LazyLoad from 'react-lazyload';
 import {Link} from "react-router-dom";
 
-import ImageLoader from "../../components/image-loader";
+import ImageLoader from "../components/image-loader";
 
 class GalleryImages extends Component{
     constructor(props){

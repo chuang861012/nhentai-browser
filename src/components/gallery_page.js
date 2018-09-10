@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import GalleryDetail from "../containers/gallery_page/gallery_detail";
-import GalleryImages from "../containers/gallery_page/gallery_images";
+import GalleryDetail from "../containers/gallery_detail";
+import GalleryImages from "../containers/gallery_images";
 import {Link} from "react-router-dom";
 
 export default class GalleryPage extends Component {

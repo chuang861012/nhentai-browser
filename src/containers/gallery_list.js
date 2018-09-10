@@ -2,11 +2,12 @@ import React,{Component} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import ButtonGroup from "./page_button";
-import {searchNhentai} from "../../actions";
+import {searchNhentai} from "../actions";
 import {Link} from "react-router-dom";
-import {API_URL} from "../../data.js";
+import {API_URL} from "../data";
 
-import ImageLoader from "../../components/image-loader";
+import PageLoader from "../components/page_loader";
+import ImageLoader from "../components/image-loader";
 
 class GalleryList extends Component{
     constructor(props){
@@ -73,11 +74,7 @@ class GalleryList extends Component{
 
     render(){
         if(this.props.data === null){
-            return (
-                <div>
-                    <h1 className="loading">Loading...</h1>
-                </div>
-            );
+            return <PageLoader />;
         }else if(this.props.data.length <=0){
             return (
                 <div>

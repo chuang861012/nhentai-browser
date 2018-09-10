@@ -3,7 +3,6 @@ import {HashRouter,Link} from "react-router-dom";
 import GalleryReader from "../gallery_reader";
 import Root from "../../Root";
 import {mount} from "enzyme";
-import moxios from "moxios";
 import ImageLoader from "../image-loader";
 
 let wrapped;

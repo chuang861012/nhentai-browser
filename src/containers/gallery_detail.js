@@ -1,9 +1,10 @@
 import React,{Component} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {getBookById} from "../../actions/index";
+import {getBookById} from "../actions";
 
-import ImageLoader from "../../components/image-loader";
+import PageLoader from "../components/page_loader";
+import ImageLoader from "../components/image-loader";
 
 class GalleryDetail extends Component{
     constructor(props){
@@ -54,7 +55,7 @@ class GalleryDetail extends Component{
 
     render(){
         if(!this.props.book.images){
-            return (<h1 className="loading">Loading...</h1>);
+            return <PageLoader />;
         }
         return (
             <div className="book-container">

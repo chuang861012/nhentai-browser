@@ -2,8 +2,8 @@ import React from "react";
 import {shallow} from "enzyme";
 import GalleryPage from "../gallery_page";
 
-import GalleryDetail from "../../containers/gallery_page/gallery_detail";
-import GalleryImages from "../../containers/gallery_page/gallery_images";
+import GalleryDetail from "../../containers/gallery_detail";
+import GalleryImages from "../../containers/gallery_images";
 import {Link} from "react-router-dom";
 
 let wrapped;

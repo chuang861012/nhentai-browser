@@ -3,6 +3,7 @@
     font-size: 16px;
     margin:0;
     padding: 0;
+    font-family: Microsoft JhengHei;
 }
 body{
     background-color: #2d3436 !important;
@@ -16,6 +17,14 @@ body{
     color:#fff;
     text-align: center;
     margin:2rem 0;
+    font-size: 2rem;
+}
+.loader-primary{
+    margin:auto;
+    width:8rem;
+}
+a{
+    text-decoration: none;
 }
 a:hover{
     text-decoration: none !important;
@@ -25,7 +34,50 @@ a:hover{
     width:60%;
 }
 .search-bar{
-    max-width: 20rem;
+    max-width: 30rem;
+    position: relative;
+}
+.form-control{
+    border-radius: .5rem;
+    font-size: 2rem;
+    box-shadow: none;
+    border: none;
+    padding:.3rem;
+    outline:none;
+    width:100%;
+}
+.form-control:focus{
+    box-shadow: 0 0 0 2pt #ff4d4d;
+}
+.btn{
+    border:none;
+    background-color: transparent;
+    outline:none;
+    font-size: 2rem;
+    box-shadow: none;
+    cursor: pointer;
+    color:#fff;
+    margin:.5rem;
+}
+.btn > a{
+    font-size: 2rem;
+    color:#fff;
+}
+.btn:disabled{
+    visibility: hidden;
+}
+.searchbar-btn{
+    display: inline-block;
+    position: absolute;
+    top:50%;
+    right:0;
+    transform: translate(0,-50%);
+    margin:0;
+    height: 100%;
+    width:3rem;
+}
+.btn-svg{
+    height: 50%;
 }
 .btn-group-wrap{
     text-align: center;
@@ -64,8 +116,9 @@ a:hover{
     background-color: rgba(120, 130, 134,1.0);
 }
 .item-title{
-    font-size: .9rem;
+    font-size: .8rem;
     height: 15%;
+    margin-bottom:.5rem;
     overflow: hidden;
     text-decoration: none;
     font-family: Microsoft JhengHei;
@@ -98,6 +151,7 @@ a:hover{
         font-weight: 700;
         padding:.2rem .5rem;
         flex:0 1 66%;
+        margin:0;
     }
 }
 
@@ -208,6 +262,7 @@ a:hover{
     width:3rem;
     height: 3rem;
     align-self: flex-start;
+    cursor: pointer;
 }
 
 .reader-img-container{
@@ -272,4 +327,15 @@ a:hover{
 .imageloader img{
     display: block;
     margin:0 auto;
+}
+
+.footer{
+    font-size: .8rem;
+    color:#fff;
+    text-align: center;
+    margin:0 3rem;
+    margin-bottom: 1.2rem;
+}
+.footer>a{
+    color:#74b9ff;
 }

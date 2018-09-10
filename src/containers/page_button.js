@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {searchNhentai} from "../../actions";
+import {searchNhentai} from "../actions";
 import {Link} from "react-router-dom";
 
 class ButtonGroup extends Component{
@@ -45,11 +45,11 @@ class ButtonGroup extends Component{
         return (
             <div className="btn-group-wrap">
                 <div className="btn-group">
-                    <Link to={`${query}/1`}><input type="button" className="btn btn-secondary" value="<<"/></Link>
-                    <Link to={`${query}/${parseInt(this.props.current_page)-1}`}><input type="button" className="btn btn-secondary" value="<" disabled={this.props.current_page-1<1 ? true : false}/></Link>
-                    <a><input type="button" className="btn btn-secondary" value={this.props.current_page} /></a>
-                    <Link to={`${query}/${parseInt(this.props.current_page)+1}`}><input type="button" className="btn btn-secondary" value=">" disabled={this.props.current_page+1 > this.props.max_page ? true : false}/></Link>
-                    <Link to={`${query}/${this.props.max_page}`}><input type="button" className="btn btn-secondary" value=">>" /></Link>
+                    <button className="btn" disabled={this.props.current_page==1}><Link to={`${query}/1`}>{"<<"}</Link></button>
+                    <button className="btn" disabled={this.props.current_page-1<1}><Link to={`${query}/${parseInt(this.props.current_page)-1}`}>{"<"}</Link></button>
+                    <input type="button" className="btn btn-secondary" value={this.props.current_page} />
+                    <button className="btn" disabled={this.props.current_page+1 > this.props.max_page}><Link to={`${query}/${parseInt(this.props.current_page)+1}`}>{">"}</Link></button>
+                    <button className="btn" disabled={this.props.current_page==this.props.max_page}><Link to={`${query}/${this.props.max_page}`}>{">>"}</Link></button>
                 </div>
             </div>
         );
