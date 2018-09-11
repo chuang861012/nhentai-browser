@@ -1,13 +1,20 @@
-import React from 'react';
-import ImageLoader from 'react-load-image';
-import loader_image from "../img/loader.gif";
+import React from "react";
+import Image_Loader from "react-load-image";
+import loader_image from "../img/loader.svg";
+import PropTypes from "prop-types";
 
-export default (props)=>{
+export const ImageLoader =  (props)=>{ // eslint-disable-line arrow-body-style
     return (
-        <ImageLoader src={props.src} className="img-loader-container" onLoad={props.onLoad}>
+        <Image_Loader src={props.src} className="img-loader-container" onLoad={props.onLoad}>
             <img className={props.className}/>
             <div className="img-loader-error">Error</div>
             <img src={loader_image} className="img-loader-loader"/>
-        </ImageLoader>
+        </Image_Loader>
     );
+};
+
+ImageLoader.propTypes = {
+    src:PropTypes.string,
+    onLoad:PropTypes.func,
+    className:PropTypes.string
 };

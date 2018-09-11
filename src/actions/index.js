@@ -24,5 +24,5 @@ export function getBookById(id){
     return {
         type:GET_BOOK,
         payload
-    }
+    };
 }

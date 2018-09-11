@@ -2,7 +2,8 @@ import React,{Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {searchNhentai} from "../actions";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from "react-router-dom";
+import PropTypes from "prop-types";
 import searchIcon from "../img/musica-searcher.svg";
 
 class SearchBar extends Component{
@@ -23,7 +24,7 @@ class SearchBar extends Component{
     onFormSubmit(event){
         event.preventDefault();
 
-        this.props.history.push(`/query/${this.state.term}/1`)
+        this.props.history.push(`/query/${this.state.term}/1`);
     }
 
     render(){
@@ -37,11 +38,17 @@ class SearchBar extends Component{
                 <button type="submit" className="btn searchbar-btn"><img src={searchIcon} className="btn-svg"/></button>
             </form>
         );
-    };
-};
+    }
+}
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({searchNhentai},dispatch);
 }
+
+SearchBar.propTypes = {
+    history:PropTypes.shape({
+        push:PropTypes.func
+    })
+};
 
 export default withRouter(connect(null,mapDispatchToProps)(SearchBar));

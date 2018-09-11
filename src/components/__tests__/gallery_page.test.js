@@ -10,7 +10,7 @@ let wrapped;
 
 beforeEach(()=>{
     const fakeParams = {params:{query:"Hello",id:"12345"}};
-    const fakeLocation = {state:{backpath:"/1"}}
+    const fakeLocation = {state:{backpath:"/1"}};
     wrapped = shallow(<GalleryPage match={fakeParams} location={fakeLocation}/>);
 });
 

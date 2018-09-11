@@ -16,13 +16,13 @@ it("should return currect search result",()=>{
         meta:{
             page:1
         }
-    }
+    };
     const expected_result = {
         data:[1,2,3,4,5],
-        current_page:1,
-        max_page:5,
+        current_page:"1",
+        max_page:"5",
         url:"localhost:8080"
-    }
+    };
     expect(reducer_search(null,action)).toEqual(expected_result);
 });
 
@@ -42,6 +42,6 @@ it("should return null data result",()=>{
             page:1
         }
     };
-    const expected_result = {data:null,current_page:1,max_page:1};
+    const expected_result = {data:null,current_page:"1",max_page:"1"};
     expect(reducer_search(undefined,action)).toEqual(expected_result);
 });

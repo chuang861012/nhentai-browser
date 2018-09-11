@@ -1,11 +1,11 @@
 import React from "react";
 import {shallow} from "enzyme";
-import ImageLoader from "../image-loader";
+import {ImageLoader} from "../image-loader";
 
 let wrapped;
 
 beforeEach(()=>{
-    wrapped = shallow(<ImageLoader src="localhost:5000" onLoad={()=>{console.log("hello")}} className="img-loader-img"/>);
+    wrapped = shallow(<ImageLoader src="localhost:5000" onLoad={()=>{}} className="img-loader-img"/>);
 });
 
 it("should contain source img",()=>{

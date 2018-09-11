@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {bindActionCreators} from "redux";
 import {getBookById} from "../actions/index";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import {PageLoader} from "./page_loader";
 
-import ImageLoader from "../components/image-loader";
+import {ImageLoader} from "../components/image-loader";
 
 class GalleryReader extends Component{
     constructor(props){
@@ -14,36 +17,33 @@ class GalleryReader extends Component{
         this.computePageLink = this.computePageLink.bind(this);
         this.preloadImage = this.preloadImage.bind(this);
         this.preloadArr = []; // the preload image queue
-    }
 
-    componentWillMount(){
+        const backpath = _.get(props,"location.state.backpath","/");
+
         // if no data in state , go fetch data by id
         // if there's data remains , set it to the state
-        if(!this.props.location.state){
-            this.props.getBookById(this.props.match.params.id);
+        if(!props.location.state){
+            this.props.getBookById(props.match.params.id);
+            this.state = {
+                backpath
+            };
         } else{
-            this.setState({
-                images:this.props.location.state.images,
-                page:this.props.match.params.page,
-                media_id:this.props.location.state.media_id
-            });
-        }
-        // back path setting
-        try{
-            const backpath = this.props.location.state.backpath;
-            this.setState({backpath});
-        }catch(e){
-            this.setState({backpath:"/"});
+            this.state={
+                images:props.location.state.images,
+                page:props.match.params.page,
+                media_id:props.location.state.media_id,
+                backpath
+            };
         }
     }
 
-    componentWillReceiveProps(nextProps){
+    static getDerivedStateFromProps(nextProps){
         // state setting while receive props from actions
-        this.setState({
+        return {
             images:nextProps.images,
             page:nextProps.match.params.page,
             media_id:nextProps.media_id
-        });
+        };
     }
 
     computeImageUrl(){
@@ -86,12 +86,8 @@ class GalleryReader extends Component{
 
     render(){
         // show a loading text while fetching data
-        if(!this.state.images){
-            return (
-                <p>
-                    Loading...
-                </p>
-            );
+        if(!this.state.images || this.state.images.length === 0){
+            return <PageLoader />;
         }
         return (
             <div>
@@ -114,16 +110,37 @@ class GalleryReader extends Component{
     }
 }
 
-function mapStateToProps({book}){
-    if(!book.images){
+function mapStateToProps(state){
+    if(!state.book.images){
         return {images:[]};
     }
-    const images = book.images.pages || [];
-    return {images,media_id:book.media_id,id:book.id};
+    const images = state.book.images.pages || [];
+    const id = state.book.id;
+    return {images,media_id:state.book.media_id,id:id.toString()};
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({getBookById},dispatch);
 }
+
+GalleryReader.propTypes = {
+    location:PropTypes.shape({
+        state:PropTypes.shape({
+            media_id:PropTypes.string,
+            backpath:PropTypes.string,
+            images:PropTypes.arrayOf(PropTypes.object)
+        })
+    }),
+    match:PropTypes.shape({
+        params:PropTypes.shape({
+            id:PropTypes.string,
+            page:PropTypes.string
+        })
+    }),
+    images:PropTypes.arrayOf(PropTypes.object),
+    media_id:PropTypes.string,
+    id:PropTypes.string,
+    getBookById:PropTypes.func
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(GalleryReader);

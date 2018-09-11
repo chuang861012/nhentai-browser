@@ -49,6 +49,10 @@ a:hover{
 .form-control:focus{
     box-shadow: 0 0 0 2pt #ff4d4d;
 }
+.btn-group-wrap{
+    display: flex;
+    align-items: center;
+}
 .btn{
     border:none;
     background-color: transparent;
@@ -60,7 +64,7 @@ a:hover{
     margin:.5rem;
 }
 .btn > a{
-    font-size: 2rem;
+    font-size: 3rem;
     color:#fff;
 }
 .btn:disabled{

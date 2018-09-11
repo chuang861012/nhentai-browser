@@ -12,7 +12,7 @@ beforeEach(()=>{
         params:{
             id:"12345"
         }
-    }
+    };
     wrapped = shallow(<GallerySearcher match={fakeParams}/>);
 });
 

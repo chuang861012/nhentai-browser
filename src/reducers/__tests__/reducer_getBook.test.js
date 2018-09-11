@@ -7,7 +7,7 @@ it("should return book data",()=>{
         payload:{
             data:["book data #1","book data #2"]
         }
-    }
+    };
 
     expect(reducer_getBook(null,action)).toEqual(["book data #1","book data #2"]);
 });
@@ -18,7 +18,7 @@ it("should return empty object",()=>{
         payload:{
             data:["book data #1","book data #2"]
         }
-    }
+    };
 
     expect(reducer_getBook(null,action)).toEqual({});
 });

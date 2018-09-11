@@ -2,9 +2,10 @@ import React,{Component} from "react";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {getBookById} from "../actions";
+import PropTypes from "prop-types";
 
-import PageLoader from "../components/page_loader";
-import ImageLoader from "../components/image-loader";
+import {PageLoader} from "../components/page_loader";
+import {ImageLoader} from "../components/image-loader";
 
 class GalleryDetail extends Component{
     constructor(props){
@@ -12,11 +13,8 @@ class GalleryDetail extends Component{
 
         this.computeCoverUrl = this.computeCoverUrl.bind(this);
         this.renderTags = this.renderTags.bind(this);
-    }
-
-    componentWillMount(){
         // fetch data by id when user enter this page
-        this.props.getBookById(this.props.id);
+        this.props.getBookById(props.id);
     }
 
     computeCoverUrl(){
@@ -33,9 +31,7 @@ class GalleryDetail extends Component{
         return (
             <div key={key}>
                 <span className="book-tag-type">{key} : </span>
-                {tags.map((tag,index)=>{
-                    return <span className="book-tag-tag" key={index}>{tag.name}</span>
-                })}
+                {tags.map((tag,index) => <span className="book-tag-tag" key={index}>{tag.name}</span> )}
             </div>
         );
     }
@@ -43,7 +39,7 @@ class GalleryDetail extends Component{
     renderTags(tags){
         // change the tag array into useful object
         const tags_dict = {};
-        tags.forEach(tag=>{
+        tags.forEach((tag)=>{
             if(!tags_dict[tag.type]){
                 tags_dict[tag.type] = [tag];
             }else{
@@ -80,5 +76,24 @@ function mapStateToProps({book}){
 function mapDispatchToProps(dispatch){
     return bindActionCreators({getBookById},dispatch);
 }
+
+GalleryDetail.propTypes = {
+    getBookById:PropTypes.func,
+    id:PropTypes.string,
+    book:PropTypes.shape({
+        title:PropTypes.shape({
+            english:PropTypes.string,
+            japanese:PropTypes.string
+        }),
+        media_id:PropTypes.string,
+        images:PropTypes.shape({
+            cover:PropTypes.shape({
+                t:PropTypes.string
+            })
+        }),
+        tags:PropTypes.arrayOf(PropTypes.object),
+        num_pages:PropTypes.number
+    })
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(GalleryDetail);

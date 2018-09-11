@@ -5,31 +5,30 @@ import ButtonGroup from "./page_button";
 import {searchNhentai} from "../actions";
 import {Link} from "react-router-dom";
 import {API_URL} from "../data";
+import PropTypes from "prop-types";
 
-import PageLoader from "../components/page_loader";
-import ImageLoader from "../components/image-loader";
+import {PageLoader} from "../components/page_loader";
+import {ImageLoader} from "../components/image-loader";
 
 class GalleryList extends Component{
     constructor(props){
         super(props);
 
-        this.renderGallery = this.renderGallery.bind(this);
-        this.computePath = this.computePath.bind(this);
-    }
-
-    componentWillMount(){
         // fetch the data while user enter
         // search the query or the all page
         let url;
-        if(this.props.query && this.props.query!==""){
-            url = `${API_URL}/search?query=${this.props.query}`;
+        if(props.query && props.query!==""){
+            url = `${API_URL}/search?query=${props.query}`;
         }
         else{
             url = `${API_URL}/search?`;
         }
         // specify the page at
-        const page = this.props.page || 1; 
-        this.props.searchNhentai(url,page);
+        const page = props.page || 1; 
+        props.searchNhentai(url,page);
+
+        this.renderGallery = this.renderGallery.bind(this);
+        this.computePath = this.computePath.bind(this);
     }
 
     componentDidUpdate(prev){
@@ -86,7 +85,7 @@ class GalleryList extends Component{
             <div className="items-container">
                 <ButtonGroup page={this.props.current_page} query={this.props.query}/>
                 <div className="items">
-                {this.props.data.map(this.renderGallery)}
+                    {this.props.data.map(this.renderGallery)}
                 </div>
                 <ButtonGroup page={this.props.current_page} query={this.props.query}/>
             </div>
@@ -101,5 +100,13 @@ function mapStateToProps({gallery}){
 function mapDispatchToProps(dispatch){
     return bindActionCreators({searchNhentai},dispatch);
 }
+
+GalleryList.propTypes = {
+    query:PropTypes.string,
+    page:PropTypes.string,
+    current_page:PropTypes.string,
+    data:PropTypes.array,
+    searchNhentai:PropTypes.func
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(GalleryList);

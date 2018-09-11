@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {searchNhentai} from "../actions";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 class ButtonGroup extends Component{
     constructor(props){
@@ -45,11 +46,11 @@ class ButtonGroup extends Component{
         return (
             <div className="btn-group-wrap">
                 <div className="btn-group">
-                    <button className="btn" disabled={this.props.current_page==1}><Link to={`${query}/1`}>{"<<"}</Link></button>
-                    <button className="btn" disabled={this.props.current_page-1<1}><Link to={`${query}/${parseInt(this.props.current_page)-1}`}>{"<"}</Link></button>
-                    <input type="button" className="btn btn-secondary" value={this.props.current_page} />
-                    <button className="btn" disabled={this.props.current_page+1 > this.props.max_page}><Link to={`${query}/${parseInt(this.props.current_page)+1}`}>{">"}</Link></button>
-                    <button className="btn" disabled={this.props.current_page==this.props.max_page}><Link to={`${query}/${this.props.max_page}`}>{">>"}</Link></button>
+                    <button className="btn btn-arrow" disabled={this.props.current_page==1}><Link to={`${query}/1`}>&laquo;</Link></button>
+                    <button className="btn btn-arrow" disabled={this.props.current_page-1<1}><Link to={`${query}/${parseInt(this.props.current_page)-1}`}>&lsaquo;</Link></button>
+                    <input type="button" className="btn" value={this.props.current_page} />
+                    <button className="btn btn-arrow" disabled={this.props.current_page+1 > this.props.max_page}><Link to={`${query}/${parseInt(this.props.current_page)+1}`}>&rsaquo;</Link></button>
+                    <button className="btn btn-arrow" disabled={this.props.current_page==this.props.max_page}><Link to={`${query}/${this.props.max_page}`}>&raquo;</Link></button>
                 </div>
             </div>
         );
@@ -63,5 +64,13 @@ function mapStateToProps({gallery}){
 function mapDispatchToProps(dispatch){
     return bindActionCreators({searchNhentai},dispatch);
 }
+
+ButtonGroup.propTypes = {
+    current_page:PropTypes.string,
+    url:PropTypes.string,
+    searchNhentai:PropTypes.func,
+    max_page:PropTypes.string,
+    query:PropTypes.string
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(ButtonGroup);
