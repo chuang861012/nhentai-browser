@@ -14,6 +14,12 @@ class GalleryList extends Component{
     constructor(props){
         super(props);
 
+        this.state = {
+            query:props.query,
+            current_page:props.page,
+            data:props.data
+        };
+
         // fetch the data while user enter
         // search the query or the all page
         let url;
@@ -31,21 +37,29 @@ class GalleryList extends Component{
         this.computePath = this.computePath.bind(this);
     }
 
-    componentDidUpdate(prev){
-        // check if at same page
-        if(prev.query === this.props.query && prev.page===this.props.page){
-            return false;
+    static getDerivedStateFromProps(nextProps,state){
+        if(!(state.query === nextProps.query && state.current_page === nextProps.page)){
+            let url;
+            if(nextProps.query && nextProps.query!==""){
+                url = `${API_URL}/search?query=${nextProps.query}`;
+            }
+            else{
+                url = `${API_URL}/search?`;
+            }
+            const page = nextProps.page || 1; 
+            nextProps.searchNhentai(url,page);
+            return {
+                data:null,
+                query:nextProps.query,
+                current_page:nextProps.page,
+            };
         }
-        // otherwise update page data
-        let url;
-        if(this.props.query && this.props.query!==""){
-            url = `${API_URL}/search?query=${this.props.query}`;
-        }
-        else{
-            url = `${API_URL}/search?`;
-        }
-        const page = this.props.page || 1; 
-        this.props.searchNhentai(url,page);
+        // state setting while receive props from actions
+        return {
+            data:nextProps.data,
+            query:nextProps.query,
+            current_page:nextProps.page,
+        };
     }
 
     computePath(){
@@ -72,9 +86,9 @@ class GalleryList extends Component{
     }
 
     render(){
-        if(this.props.data === null){
+        if(this.state.data === null || this.state.data === undefined){
             return <PageLoader />;
-        }else if(this.props.data.length <=0){
+        }else if(this.state.data.length <=0){
             return (
                 <div>
                     <h1 className="loading">No Results</h1>
@@ -83,11 +97,11 @@ class GalleryList extends Component{
         }
         return (
             <div className="items-container">
-                <ButtonGroup page={this.props.current_page} query={this.props.query}/>
+                <ButtonGroup page={this.state.current_page} query={this.state.query}/>
                 <div className="items">
-                    {this.props.data.map(this.renderGallery)}
+                    {this.state.data.map(this.renderGallery)}
                 </div>
-                <ButtonGroup page={this.props.current_page} query={this.props.query}/>
+                <ButtonGroup page={this.state.current_page} query={this.state.query}/>
             </div>
         );
     }

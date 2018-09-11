@@ -10,8 +10,29 @@ body{
 }
 .container{
     margin:2rem auto;
+    margin-top:0;
     max-width: 100% !important;
     padding:0;
+}
+.nav-container{
+    width:100%;
+    display: flex;
+    background-color: #808e9b;
+    text-align: center;
+}
+.nav-item{
+    display: flex;
+    align-items: center;
+    color:#000;
+    max-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex:0 0 3rem;
+    margin-left: 5rem;
+}
+.nav-img{
+    max-width: 100%;
+    max-height: 100%;
 }
 .loading{
     color:#fff;
@@ -29,25 +50,28 @@ a{
 a:hover{
     text-decoration: none !important;
 }
-.input-group{
-    margin:.5rem auto;
-    width:60%;
-}
 .search-bar{
-    max-width: 30rem;
+    display: flex;
+    align-items: center;
+    align-self: center;
     position: relative;
+    flex:1 0;
+    margin:0 1.5rem;
+    height: 100%;
 }
 .form-control{
     border-radius: .5rem;
-    font-size: 2rem;
+    font-size: 1rem;
     box-shadow: none;
     border: none;
     padding:.3rem;
+    padding-left: .6rem;
     outline:none;
     width:100%;
+    height: 100%;
 }
 .form-control:focus{
-    box-shadow: 0 0 0 2pt #ff4d4d;
+    box-shadow: 0 0 0 2pt #2f4999;
 }
 .btn-group-wrap{
     display: flex;
@@ -71,17 +95,20 @@ a:hover{
     visibility: hidden;
 }
 .searchbar-btn{
-    display: inline-block;
+    display: flex;
     position: absolute;
     top:50%;
     right:0;
     transform: translate(0,-50%);
     margin:0;
     height: 100%;
-    width:3rem;
+    width:2.5rem;
+    justify-content: center;
+    align-items: center;
 }
 .btn-svg{
-    height: 50%;
+    max-height: 60%;
+    max-width: 60%;
 }
 .btn-group-wrap{
     text-align: center;
@@ -229,8 +256,6 @@ a:hover{
 }
 .img-box{
     margin:.5rem;
-    width: 200px;
-    
 }
 .img-box > img {
     max-width: 200px;
@@ -245,8 +270,7 @@ a:hover{
         align-items: center;
     }
     .img-box{
-        width: 80%;
-        height: auto;
+        width: 80vw;
     }
     .img-box > img {
         max-width: 100%;
@@ -255,18 +279,25 @@ a:hover{
 }
 .Back-btn{
     position: absolute;
-    top:1rem;
+    top:0;
     left: 1rem;
     outline: none;
     border: none;
     text-decoration: none;
     background-color: transparent;
-    color:#fff;
     font-size: 2rem;
     width:3rem;
     height: 3rem;
     align-self: flex-start;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Back-btn > img {
+    max-width:1.5rem;
+    max-height: 1.5rem;
+    margin:auto;
 }
 
 .reader-img-container{
@@ -334,12 +365,11 @@ a:hover{
 }
 
 .footer{
-    font-size: .8rem;
     color:#fff;
     text-align: center;
     margin:0 3rem;
     margin-bottom: 1.2rem;
 }
-.footer>a{
+.footer a{
     color:#74b9ff;
 }

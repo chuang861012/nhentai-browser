@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import {PageLoader} from "./page_loader";
+import {BackButton} from "./back_button";
 
 import {ImageLoader} from "../components/image-loader";
 
@@ -92,7 +93,7 @@ class GalleryReader extends Component{
         return (
             <div>
                 <Link to={{pathname:`/g/${this.props.id}`,state:{backpath:this.state.backpath}}}>
-                    <button className="Back-btn">&larr;</button>
+                    <BackButton />
                 </Link>
                 <p className="reader-img-counter">{this.state.page} / {this.state.images.length}</p>
                 <div className="reader-img-container">
