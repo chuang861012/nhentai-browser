@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require("compression");
 const url = require("url");
 const path = require("path");
 const {getBookById,getBooks} = require("./server/api");
@@ -6,6 +7,7 @@ const {getBookById,getBooks} = require("./server/api");
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(compression());
 app.use(express.static(path.resolve(__dirname, "dist")));
 
 app.get("/api/id",async(req,res)=>{
