@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {HashRouter,Route,Switch} from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
-import {Root} from "./Root";
-import {NavBar} from "./components/nav_bar";
+import { Root } from "./Root";
+import { NavBar } from "./components/nav_bar";
 import GallerySearcher from "./components/gallery_searcher";
 import GalleryPage from "./components/gallery_page";
 import GalleryReader from "./components/gallery_reader";

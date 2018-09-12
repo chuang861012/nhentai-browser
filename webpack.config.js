@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 const config = {
-    entry: ['./src/index.js'],
+    entry: ['./src/index.jsx'],
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: 'bundle.js'
