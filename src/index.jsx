@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Root } from "./Root";
 import { NavBar } from "./components/nav_bar";
@@ -13,7 +13,7 @@ import "./style.css";
 ReactDOM.render(
     <Root>
         <div>
-            <HashRouter>
+            <BrowserRouter>
                 <div>
                     <NavBar />
                     <Switch>
@@ -23,7 +23,7 @@ ReactDOM.render(
                         <Route path="/:page?" component={GallerySearcher} />
                     </Switch>
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         </div>
     </Root>
     , document.querySelector(".container"));

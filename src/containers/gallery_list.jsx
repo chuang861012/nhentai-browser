@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import ButtonGroup from "./page_button";
 import { searchNhentai } from "../actions";
 import { Link } from "react-router-dom";
-import { API_URL } from "../data";
 import PropTypes from "prop-types";
 
 import { PageLoader } from "../components/page_loader";
@@ -24,10 +23,10 @@ class GalleryList extends Component {
         // search the query or the all page
         let url;
         if (props.query && props.query !== "") {
-            url = `${API_URL}/search?query=${props.query}`;
+            url = `/api/search?query=${props.query}`;
         }
         else {
-            url = `${API_URL}/search?`;
+            url = `/api/search?`;
         }
         // specify the page at
         const page = props.page || 1;
@@ -41,10 +40,10 @@ class GalleryList extends Component {
         if (!(state.query === nextProps.query && state.current_page === nextProps.page)) {
             let url;
             if (nextProps.query && nextProps.query !== "") {
-                url = `${API_URL}/search?query=${nextProps.query}`;
+                url = `/api/search?query=${nextProps.query}`;
             }
             else {
-                url = `${API_URL}/search?`;
+                url = `/api/search?`;
             }
             const page = nextProps.page || 1;
             nextProps.searchNhentai(url, page);

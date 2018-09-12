@@ -1,6 +1,6 @@
 import React from "react";
 import {shallow} from "enzyme";
-import {PageLoader} from "../page_loader.js";
+import {PageLoader} from "../page_loader";
 import Loader from "../../img/Interwind-1s-200px.svg";
 
 let wrapped;

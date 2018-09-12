@@ -3,7 +3,7 @@ import {shallow} from "enzyme";
 import GallerySearcher from "../gallery_searcher";
 
 import GalleryList from "../../containers/gallery_list";
-import SeachBar from "../../containers/search_bar";
+import {SeachBar} from "../../containers/search_bar";
 
 let wrapped;
 
