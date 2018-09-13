@@ -3,10 +3,14 @@ A react-redux project.
 This web project use [nhentai-api](https://github.com/chuang861012/nhentai-api) to fetch data from nhentai.
 ## Installation
 Download
-        git clone git@github.com:chuang861012/nhentai-browser.git
+```shell
+git clone git@github.com:chuang861012/nhentai-browser.git
+```
 run scripts
-        npm run build
-        npm start
+```shell
+npm run build
+npm start
+```
 ## Deploy
 You can clone the repo and deploy it  without doing anything. 
 ## Project Introduction
@@ -21,16 +25,21 @@ List of packages of this project :
 - [react-lazyload](https://github.com/jasonslyvia/react-lazyload)
 - [react-router](https://reacttraining.com/react-router/)
 - [redux-promise](https://github.com/redux-utilities/redux-promise)
-- [prop-types](https://www.npmjs.com/package/prop-types)        
+- [prop-types](https://www.npmjs.com/package/prop-types)   
+
 Other packages :  
 - [lodash](https://lodash.com/docs/4.17.10)
 - [axios](https://github.com/axios/axios)
 ### Development Environment
 I use [webpack](https://webpack.js.org/) for building and development.      
 run scripts:        
-        npm run build // bundle production files to /dist
+```shell
+npm run build // bundle production files to /dist
+```
 ### Testing with Jest & enzyme
 The test cases are not complete. Still working on it.
 ### Linter
 run scripts:        
-        npm run lint
+```shell
+npm run lint
+```
