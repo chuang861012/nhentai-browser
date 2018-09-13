@@ -3,10 +3,10 @@ A react-redux project.
 This web project use [nhentai-api](https://github.com/chuang861012/nhentai-api) to fetch data from nhentai.
 ## Installation
 Download
-    git clone git@github.com:chuang861012/nhentai-browser.git
+        git clone git@github.com:chuang861012/nhentai-browser.git
 run scripts
-    npm run build
-    npm start
+        npm run build
+        npm start
 ## Deploy
 You can clone the repo and deploy it  without doing anything. 
 ## Project Introduction
@@ -28,9 +28,9 @@ Other packages :
 ### Development Environment
 I use [webpack](https://webpack.js.org/) for building and development.      
 run scripts:        
-    npm run build // bundle production files to /dist
+        npm run build // bundle production files to /dist
 ### Testing with Jest & enzyme
 The test cases are not complete. Still working on it.
 ### Linter
 run scripts:        
-    npm run lint
+        npm run lint
