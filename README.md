@@ -21,7 +21,7 @@ List of packages of this project :
 - [react-lazyload](https://github.com/jasonslyvia/react-lazyload)
 - [react-router](https://reacttraining.com/react-router/)
 - [redux-promise](https://github.com/redux-utilities/redux-promise)
-- [prop-types](https://www.npmjs.com/package/prop-types)
+- [prop-types](https://www.npmjs.com/package/prop-types)        
 Other packages :  
 - [lodash](https://lodash.com/docs/4.17.10)
 - [axios](https://github.com/axios/axios)
