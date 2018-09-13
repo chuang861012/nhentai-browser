@@ -11,7 +11,7 @@ function getBookById(id){
 function getBooks(query=null,page=1){
     let url;
     if(query!==null){
-        url = `https://nhentai.net/api/galleries/search?query=${query}&page=${page}&sort=date`;
+        url = `https://nhentai.net/api/galleries/search?query=${encodeURIComponent(query)}&page=${page}&sort=date`;
     }else{
         url = `https://nhentai.net/api/galleries/all?page=${page}&sort=date`;
     }
