@@ -93,7 +93,6 @@ class GalleryReader extends Component {
     }
 
     render() {
-        console.log("render",this.state)
         // show a loading text while fetching data
         if (!this.state.images || this.state.images.length === 0) {
             return <PageLoader />;
