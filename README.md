@@ -4,14 +4,14 @@ A react / redux project.
 ## Installation
 Download
 ```shell
-git clone git@github.com:chuang861012/nhentai-browser.git
+git clone https://github.com/chuang861012/nhentai-browser.git
 ```
 run scripts
 ```shell
 npm run build
 npm start
 ```
-## Deploy
+## Deployment
 You can clone the repo and deploy it  without doing anything. 
 ## Project Introduction
 ### Server side (back-end)
