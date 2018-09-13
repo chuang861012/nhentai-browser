@@ -17,8 +17,7 @@ You can clone the repo and deploy it  without doing anything.
 ### Server side (back-end)
 Use [Express](https://expressjs.com) to built a simple web server.      
 The server contains a api to call the api provided by [nhentai.net](https://nhentai.net) .
-### Client side (front-end)
-Must of the program is in client side javascript.       
+### Client side (front-end)   
 The project is based on [React.js](https://reactjs.org/) with [Redux](https://redux.js.org/)
 List of packages of this project : 
 - [react-redux](https://redux.js.org/)
@@ -37,6 +36,10 @@ run scripts to bundle production files to /dist:
 npm run build
 ```
 ### Testing with Jest & enzyme
+```shell
+npm run test
+npm run test:watch
+```
 The test cases are not complete. Still working on it.
 ### Linter
 run scripts:        
