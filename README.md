@@ -1,6 +1,6 @@
 # nhentai browser
-A react-redux project.  
-This web project use [nhentai-api](https://github.com/chuang861012/nhentai-api) to fetch data from nhentai.
+A react / redux project.  
+![image](https://github.com/chuang861012/nhentai-browser/blob/master/demo.gif)
 ## Installation
 Download
 ```shell
@@ -32,9 +32,9 @@ Other packages :
 - [axios](https://github.com/axios/axios)
 ### Development Environment
 I use [webpack](https://webpack.js.org/) for building and development.      
-run scripts:        
+run scripts to bundle production files to /dist:        
 ```shell
-npm run build // bundle production files to /dist
+npm run build
 ```
 ### Testing with Jest & enzyme
 The test cases are not complete. Still working on it.
@@ -43,3 +43,5 @@ run scripts:
 ```shell
 npm run lint
 ```
+## License
+This project is available under the MIT license.
