@@ -8,6 +8,7 @@ git clone https://github.com/chuang861012/nhentai-browser.git
 ```
 run scripts
 ```shell
+npm install
 npm run build
 npm start
 ```
