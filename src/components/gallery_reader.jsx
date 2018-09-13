@@ -23,7 +23,7 @@ class GalleryReader extends Component {
 
         // if no data in state , go fetch data by id
         // if there's data remains , set it to the state
-        if (!props.location.state) {
+        if (!_.get(this.state,"images",null)) {
             this.props.getBookById(props.match.params.id);
             this.state = {
                 backpath
@@ -33,17 +33,24 @@ class GalleryReader extends Component {
                 images: props.location.state.images,
                 page: props.match.params.page,
                 media_id: props.location.state.media_id,
+                id:props.match.params.id,
                 backpath
             };
         }
     }
 
     static getDerivedStateFromProps(nextProps) {
+        // keep state if contains
+        if(typeof nextProps.media_id === "undefined"){
+            return null;
+        }
+
         // state setting while receive props from actions
         return {
             images: nextProps.images,
             page: nextProps.match.params.page,
-            media_id: nextProps.media_id
+            media_id: nextProps.media_id,
+            id: nextProps.match.params.id
         };
     }
 
@@ -60,9 +67,9 @@ class GalleryReader extends Component {
         // make the url of back path
         const gallery_length = this.state.images.length;
         if (page < 1 || page > gallery_length) {
-            return `/g/${this.props.id}`;
+            return `/g/${this.state.id}`;
         } else {
-            return `/g/${this.props.id}/${page}`;
+            return `/g/${this.state.id}/${page}`;
         }
     }
 
@@ -86,6 +93,7 @@ class GalleryReader extends Component {
     }
 
     render() {
+        console.log("render",this.state)
         // show a loading text while fetching data
         if (!this.state.images || this.state.images.length === 0) {
             return <PageLoader />;

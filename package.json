@@ -6,7 +6,9 @@
     "scripts": {
         "start": "node index.js",
         "postinstall": "webpack -p --mode production",
-        "dev": "webpack-dev-server --mode development --open",
+        "webpack:dev": "webpack-dev-server --mode development --open",
+        "dev:server":"nodemon index.js",
+        "dev:static":"webpack --mode development --watch",
         "build": "rmdir /s/q dist & webpack -p --mode production",
         "test": "jest",
         "test:watch": "jest --watchAll",
