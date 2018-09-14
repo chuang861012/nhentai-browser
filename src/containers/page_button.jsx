@@ -55,7 +55,7 @@ class ButtonGroup extends Component {
                 page_array.push(i);
             }
         }
-        return page_array.sort();
+        return page_array.sort((a,b)=>a-b);
     }
 
     renderPageButtons(page){
