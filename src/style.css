@@ -96,15 +96,19 @@ a:hover {
     border: none;
     background-color: transparent;
     outline: none;
-    font-size: 2rem;
+    font-size: 1.3rem;
     box-shadow: none;
     cursor: pointer;
     color: #fff;
     margin: .5rem;
 }
 
+.btn-current{
+    color:#e1b12c;
+}
+
 .btn>a {
-    font-size: 3rem;
+    font-size: 1.5rem;
     color: #fff;
 }
 
