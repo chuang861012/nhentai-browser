@@ -25,6 +25,7 @@ List of packages of this project :
 - [react-lazyload](https://github.com/jasonslyvia/react-lazyload)
 - [react-router](https://reacttraining.com/react-router/)
 - [redux-promise](https://github.com/redux-utilities/redux-promise)
+- [react-load-image](https://github.com/DeedMob/react-load-image)
 - [prop-types](https://www.npmjs.com/package/prop-types)   
 
 Other packages :  
