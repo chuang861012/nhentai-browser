@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Root } from "./Root";
 import { NavBar } from "./components/nav_bar";
-import GallerySearcher from "./components/gallery_searcher";
+import GalleryList from "./containers/gallery_list";
 import GalleryPage from "./components/gallery_page";
 import GalleryReader from "./components/gallery_reader";
 
@@ -19,8 +19,8 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/g/:id/:page" component={GalleryReader} />
                         <Route path="/g/:id" component={GalleryPage} />
-                        <Route path="/query/:query?/:page?" component={GallerySearcher} />
-                        <Route path="/:page?" component={GallerySearcher} />
+                        <Route path="/query/:query?/:page?" component={GalleryList} />
+                        <Route path="/:page?" component={GalleryList} />
                     </Switch>
                 </div>
             </BrowserRouter>

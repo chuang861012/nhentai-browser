@@ -6,6 +6,8 @@ import { searchNhentai } from "../actions";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import _ from "lodash";
+
 import { PageLoader } from "../components/page_loader";
 import { ImageLoader } from "../components/image-loader";
 
@@ -14,22 +16,22 @@ class GalleryList extends Component {
         super(props);
 
         this.state = {
-            query: props.query,
-            current_page: props.page,
+            query: props.match.params.query,
+            current_page: props.match.params.page,
             data: props.data
         };
 
         // fetch the data while user enter
         // search the query or the all page
         let url;
-        if (props.query && props.query !== "") {
-            url = `/api/search?query=${props.query}`;
+        if (_.get(props,"match.params.query",null)) {
+            url = `/api/search?query=${props.match.params.query}`;
         }
         else {
             url = `/api/search?`;
         }
         // specify the page at
-        const page = props.page || 1;
+        const page = props.match.params.page || 1;
         props.searchNhentai(url, page);
 
         this.renderGallery = this.renderGallery.bind(this);
@@ -37,32 +39,32 @@ class GalleryList extends Component {
     }
 
     static getDerivedStateFromProps(nextProps, state) {
-        if (!(state.query === nextProps.query && state.current_page === nextProps.page)) {
+        if (!(state.query === nextProps.match.params.query && state.current_page === nextProps.match.params.page)) {
             let url;
-            if (nextProps.query && nextProps.query !== "") {
-                url = `/api/search?query=${nextProps.query}`;
+            if (_.get(nextProps,"match.params.query",null)) {
+                url = `/api/search?query=${nextProps.match.params.query}`;
             }
             else {
                 url = `/api/search?`;
             }
-            const page = nextProps.page || 1;
+            const page = nextProps.match.params.page || 1;
             nextProps.searchNhentai(url, page);
             return {
                 data: null,
-                query: nextProps.query,
-                current_page: nextProps.page,
+                query: nextProps.match.params.query,
+                current_page: nextProps.match.params.page,
             };
         }
         // state setting while receive props from actions
         return {
             data: nextProps.data,
-            query: nextProps.query,
-            current_page: nextProps.page,
+            query: nextProps.match.params.query,
+            current_page: nextProps.match.params.page,
         };
     }
 
     computePath() {
-        const query = this.props.query;
+        const query = this.props.match.params.query;
         const page = this.props.current_page;
         if (query) {
             return `/query/${query}/${page}`;
@@ -115,8 +117,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 GalleryList.propTypes = {
-    query: PropTypes.string,
-    page: PropTypes.string,
+    match:PropTypes.shape({
+        params:PropTypes.shape({
+            query: PropTypes.string,
+            page: PropTypes.string
+        })
+    }),
     current_page: PropTypes.string,
     data: PropTypes.array,
     searchNhentai: PropTypes.func
