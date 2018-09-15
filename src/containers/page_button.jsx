@@ -67,7 +67,7 @@ class ButtonGroup extends Component {
     }
 
     renderFirstPageButton(query,page){
-        if(page<6){
+        if(page<4){
             return <noscript />;
         }
         return (
@@ -79,7 +79,7 @@ class ButtonGroup extends Component {
     }
 
     renderLastPageButton(query,page){
-        if(page>this.props.max_page-6){
+        if(page>this.props.max_page-3){
             return <noscript />
         }
         return (

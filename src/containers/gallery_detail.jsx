@@ -57,7 +57,7 @@ class GalleryDetail extends Component{
         return (
             <div className="book-container">
                 <Helmet>
-                    <title>{this.props.book.title.english}</title>
+                    <title>{`${this.props.book.title.english} | nHBrowser`}</title>
                 </Helmet>
                 <div className="book-cover">
                     <ImageLoader src={this.computeCoverUrl()}/>

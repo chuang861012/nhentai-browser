@@ -103,7 +103,7 @@ class GalleryReader extends Component {
         return (
             <div>
                 <Helmet>
-                    <title>{this.state.title}</title>
+                    <title>{`${this.state.title} | nHBrowser`}</title>
                 </Helmet>
                 <Link to={{ pathname: `/g/${this.props.id}`, state: { backpath: this.state.backpath } }}>
                     <BackButton />
