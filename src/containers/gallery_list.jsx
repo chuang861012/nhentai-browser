@@ -5,6 +5,7 @@ import ButtonGroup from "./page_button";
 import { searchNhentai } from "../actions";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 
 import _ from "lodash";
 
@@ -73,6 +74,21 @@ class GalleryList extends Component {
         }
     }
 
+    renderTitle(query){
+        if(query){
+            return (
+                <Helmet>
+                    <title>{`Search．${query} | nHBrowser`}</title>
+                </Helmet>
+            );
+        }
+        return (
+            <Helmet>
+                <title>{`nHBrowser`}</title>
+            </Helmet>
+        );
+    }
+
     renderGallery(galleryData) {
         const cover_type = { j: "jpg", p: "png", g: "gif" };
         const this_type = galleryData.images.thumbnail.t;
@@ -92,12 +108,14 @@ class GalleryList extends Component {
         } else if (this.state.data.length <= 0) {
             return (
                 <div>
+                    {this.renderTitle(this.state.query)}
                     <h1 className="loading">No Results</h1>
                 </div>
             );
         }
         return (
             <div className="items-container">
+                {this.renderTitle(this.state.query)}
                 <ButtonGroup page={this.state.current_page} query={this.state.query} />
                 <div className="items">
                     {this.state.data.map(this.renderGallery)}

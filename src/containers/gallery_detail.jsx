@@ -3,6 +3,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {getBookById} from "../actions";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 
 import {PageLoader} from "../components/page_loader";
 import {ImageLoader} from "../components/image-loader";
@@ -55,6 +56,9 @@ class GalleryDetail extends Component{
         }
         return (
             <div className="book-container">
+                <Helmet>
+                    <title>{this.props.book.title.english}</title>
+                </Helmet>
                 <div className="book-cover">
                     <ImageLoader src={this.computeCoverUrl()}/>
                 </div>

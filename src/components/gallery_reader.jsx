@@ -4,6 +4,7 @@ import { getBookById } from "../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 import _ from "lodash";
 import { PageLoader } from "./page_loader";
 import { BackButton } from "./back_button";
@@ -34,7 +35,8 @@ class GalleryReader extends Component {
                 page: props.match.params.page,
                 media_id: props.location.state.media_id,
                 id:props.match.params.id,
-                backpath
+                backpath,
+                title:props.title
             };
         }
     }
@@ -50,7 +52,8 @@ class GalleryReader extends Component {
             images: nextProps.images,
             page: nextProps.match.params.page,
             media_id: nextProps.media_id,
-            id: nextProps.match.params.id
+            id: nextProps.match.params.id,
+            title:nextProps.title
         };
     }
 
@@ -99,6 +102,9 @@ class GalleryReader extends Component {
         }
         return (
             <div>
+                <Helmet>
+                    <title>{this.state.title}</title>
+                </Helmet>
                 <Link to={{ pathname: `/g/${this.props.id}`, state: { backpath: this.state.backpath } }}>
                     <BackButton />
                 </Link>
@@ -124,7 +130,12 @@ function mapStateToProps(state) {
     }
     const images = state.book.images.pages || [];
     const id = state.book.id;
-    return { images, media_id: state.book.media_id, id: id.toString() };
+    return { 
+        images, 
+        media_id:state.book.media_id,
+        id: id.toString(),
+        title:state.book.title.english 
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -148,6 +159,7 @@ GalleryReader.propTypes = {
     images: PropTypes.arrayOf(PropTypes.object),
     media_id: PropTypes.string,
     id: PropTypes.string,
+    title:PropTypes.string,
     getBookById: PropTypes.func
 };
 
