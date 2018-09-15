@@ -80,7 +80,7 @@ class ButtonGroup extends Component {
 
     renderLastPageButton(query,page){
         if(page>this.props.max_page-3){
-            return <noscript />
+            return <noscript />;
         }
         return (
             <span>
