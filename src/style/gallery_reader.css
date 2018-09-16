@@ -1,0 +1,42 @@
+.reader-img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: min-content;
+    margin: auto;
+}
+
+.reader-img-left {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.reader-img-right {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.reader-img-counter {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    margin: 1rem 0;
+}
+@media(max-width:800px) {
+    .reader-img-container {
+        width: 100vw;
+    }
+
+    .reader-img-container img {
+        max-width: 100%;
+        height: auto;
+    }
+}

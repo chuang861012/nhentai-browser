@@ -8,7 +8,7 @@ import GalleryList from "./containers/gallery_list";
 import GalleryPage from "./components/gallery_page";
 import GalleryReader from "./components/gallery_reader";
 
-import "./style.css";
+import "./style/index.css";
 
 ReactDOM.render(
     <Root>

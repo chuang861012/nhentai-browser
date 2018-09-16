@@ -1,0 +1,25 @@
+.img-loader-container {
+    position: relative;
+    min-height: 5rem;
+    min-width: 5rem;
+    overflow: hidden;
+}
+
+.img-loader-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+}
+
+.img-loader-error {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.imageloader img {
+    display: block;
+    margin: 0 auto;
+}

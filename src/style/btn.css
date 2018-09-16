@@ -1,0 +1,36 @@
+.btn-group-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.3rem;
+    box-shadow: none;
+    cursor: pointer;
+    color: #fff;
+    margin: .5rem;
+}
+
+.btn-current{
+    color:#e1b12c;
+}
+
+.btn>a {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.btn:disabled {
+    visibility: hidden;
+}
+.btn-svg {
+    max-height: 60%;
+    max-width: 60%;
+}
+
+.btn-group-wrap {
+    text-align: center;
+}

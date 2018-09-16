@@ -1,0 +1,22 @@
+.nav-container {
+    width: 100%;
+    display: flex;
+    background-color: #808e9b;
+    text-align: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    color: #000;
+    max-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex: 0 0 3rem;
+    margin-left: 5rem;
+}
+
+.nav-img {
+    max-width: 100%;
+    max-height: 100%;
+}
