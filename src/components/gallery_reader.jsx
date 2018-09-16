@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { getBookById } from "../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import _ from "lodash";
@@ -15,6 +15,9 @@ class GalleryReader extends Component {
     constructor(props) {
         super(props);
 
+        this.onLeftClick = this.onLeftClick.bind(this);
+        this.onRightClick = this.onRightClick.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
         this.computeImageUrl = this.computeImageUrl.bind(this);
         this.computePageLink = this.computePageLink.bind(this);
         this.preloadImage = this.preloadImage.bind(this);
@@ -24,7 +27,7 @@ class GalleryReader extends Component {
 
         // if no data in state , go fetch data by id
         // if there's data remains , set it to the state
-        if (!_.get(this.state,"images",null)) {
+        if (!_.get(this.state, "images", null)) {
             this.props.getBookById(props.match.params.id);
             this.state = {
                 backpath
@@ -34,16 +37,16 @@ class GalleryReader extends Component {
                 images: props.location.state.images,
                 page: props.match.params.page,
                 media_id: props.location.state.media_id,
-                id:props.match.params.id,
+                id: props.match.params.id,
                 backpath,
-                title:props.title
+                title: props.title
             };
         }
     }
 
     static getDerivedStateFromProps(nextProps) {
         // keep state if contains
-        if(typeof nextProps.media_id === "undefined"){
+        if (typeof nextProps.media_id === "undefined") {
             return null;
         }
 
@@ -53,8 +56,29 @@ class GalleryReader extends Component {
             page: nextProps.match.params.page,
             media_id: nextProps.media_id,
             id: nextProps.match.params.id,
-            title:nextProps.title
+            title: nextProps.title
         };
+    }
+
+    onLeftClick() {
+        const pathname = this.computePageLink(parseInt(this.state.page) - 1);
+        const backpath = this.state.backpath;
+        this.props.history.push({ pathname, backpath });
+    }
+
+    onRightClick() {
+        const pathname = this.computePageLink(parseInt(this.state.page) + 1);
+        const backpath = this.state.backpath;
+        this.props.history.push({ pathname, backpath });
+    }
+
+    // handle keyboard page control
+    onKeyDown({ keyCode }) {
+        if (keyCode === 39) {
+            this.onRightClick();
+        } else if (keyCode === 37) {
+            this.onLeftClick();
+        }
     }
 
     computeImageUrl() {
@@ -101,7 +125,7 @@ class GalleryReader extends Component {
             return <PageLoader />;
         }
         return (
-            <div>
+            <div onKeyDown={this.onKeyDown} tabIndex="0">
                 <Helmet>
                     <title>{`${this.state.title} | nHBrowser`}</title>
                 </Helmet>
@@ -110,12 +134,8 @@ class GalleryReader extends Component {
                 </Link>
                 <p className="reader-img-counter">{this.state.page} / {this.state.images.length}</p>
                 <div className="reader-img-container">
-                    <Link to={{ pathname: this.computePageLink(parseInt(this.state.page) - 1), backpath: this.state.backpath }}>
-                        <div className="reader-img-left" />
-                    </Link>
-                    <Link to={{ pathname: this.computePageLink(parseInt(this.state.page) + 1), backpath: this.state.backpath }}>
-                        <div className="reader-img-right" />
-                    </Link>
+                    <div className="reader-img-left" onClick={this.onLeftClick} />
+                    <div className="reader-img-right" onClick={this.onRightClick} />
                     <ImageLoader src={this.computeImageUrl()} onLoad={this.preloadImage} />
                 </div>
                 <p className="reader-img-counter">{this.state.page} / {this.state.images.length}</p>
@@ -130,11 +150,11 @@ function mapStateToProps(state) {
     }
     const images = state.book.images.pages || [];
     const id = state.book.id;
-    return { 
-        images, 
-        media_id:state.book.media_id,
+    return {
+        images,
+        media_id: state.book.media_id,
         id: id.toString(),
-        title:state.book.title.english 
+        title: state.book.title.english
     };
 }
 
@@ -159,8 +179,8 @@ GalleryReader.propTypes = {
     images: PropTypes.arrayOf(PropTypes.object),
     media_id: PropTypes.string,
     id: PropTypes.string,
-    title:PropTypes.string,
+    title: PropTypes.string,
     getBookById: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GalleryReader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GalleryReader));
