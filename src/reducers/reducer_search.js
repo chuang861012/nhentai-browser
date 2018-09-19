@@ -1,10 +1,10 @@
 import {
-    SEARCH_NHENTAI
+    SEARCH_KEYWORD
 } from "../actions/index";
 
 export default function (state = {data:null,current_page:"1",max_page:"1"}, action) {
     switch (action.type) {
-        case SEARCH_NHENTAI:
+        case SEARCH_KEYWORD:
             return {
                 data:action.payload.data.result,
                 current_page:action.meta.page.toString(),

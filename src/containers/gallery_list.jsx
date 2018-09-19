@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ButtonGroup from "./page_button";
-import { searchNhentai } from "../actions";
+import { searchBooksByKeyword } from "../actions";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
@@ -33,7 +33,7 @@ class GalleryList extends Component {
         }
         // specify the page at
         const page = props.match.params.page || 1;
-        props.searchNhentai(url, page);
+        props.searchBooksByKeyword(url, page);
 
         this.renderGallery = this.renderGallery.bind(this);
         this.computePath = this.computePath.bind(this);
@@ -49,7 +49,7 @@ class GalleryList extends Component {
                 url = `/api/search?`;
             }
             const page = nextProps.match.params.page || 1;
-            nextProps.searchNhentai(url, page);
+            nextProps.searchBooksByKeyword(url, page);
             return {
                 data: null,
                 query: nextProps.match.params.query,
@@ -131,7 +131,7 @@ function mapStateToProps({ gallery }) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ searchNhentai }, dispatch);
+    return bindActionCreators({ searchBooksByKeyword }, dispatch);
 }
 
 GalleryList.propTypes = {
@@ -143,7 +143,7 @@ GalleryList.propTypes = {
     }),
     current_page: PropTypes.string,
     data: PropTypes.array,
-    searchNhentai: PropTypes.func
+    searchBooksByKeyword: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GalleryList);

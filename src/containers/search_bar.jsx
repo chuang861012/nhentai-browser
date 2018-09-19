@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { searchNhentai } from "../actions";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import searchIcon from "../img/musica-searcher.svg";
@@ -41,14 +38,10 @@ class SearchBar extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ searchNhentai }, dispatch);
-}
-
 SearchBar.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func
     })
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(SearchBar));
+export default withRouter(SearchBar);
