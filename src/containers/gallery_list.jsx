@@ -9,8 +9,8 @@ import Helmet from "react-helmet";
 
 import _ from "lodash";
 
-import { PageLoader } from "../components/page_loader";
-import { ImageLoader } from "../components/image-loader";
+import PageLoader from "../components/page_loader";
+import ImageLoader from "../components/image-loader";
 
 class GalleryList extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class GalleryList extends Component {
             url = `/api/search?query=${props.match.params.query}`;
         }
         else {
-            url = `/api/search?`;
+            url = "/api/search?";
         }
         // specify the page at
         const page = props.match.params.page || 1;
@@ -46,7 +46,7 @@ class GalleryList extends Component {
                 url = `/api/search?query=${nextProps.match.params.query}`;
             }
             else {
-                url = `/api/search?`;
+                url = "/api/search?";
             }
             const page = nextProps.match.params.page || 1;
             nextProps.searchBooksByKeyword(url, page);
@@ -84,7 +84,7 @@ class GalleryList extends Component {
         }
         return (
             <Helmet>
-                <title>{`nHBrowser`}</title>
+                <title>nHBrowser</title>
             </Helmet>
         );
     }

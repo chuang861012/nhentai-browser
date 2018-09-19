@@ -5,8 +5,8 @@ import {getBookById} from "../actions";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 
-import {PageLoader} from "../components/page_loader";
-import {ImageLoader} from "../components/image-loader";
+import PageLoader from "../components/page_loader";
+import ImageLoader from "../components/image-loader";
 
 class GalleryDetail extends Component{
     constructor(props){

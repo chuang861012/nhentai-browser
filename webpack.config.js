@@ -3,10 +3,12 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 const config = {
-    entry: ['./src/index.jsx'],
+    entry: {
+        bundle:'./src/index.jsx'
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: "/"
     },
     resolve: {
@@ -28,11 +30,12 @@ const config = {
                 test: /\.css$/
             },
             {
-                test:/\.(jpe?g|png|gif|svg)$/,
-                use:[
-                    {
-                        loader:"url-loader",
-                        options:{limit:40000}
+                test: /\.(jpe?g|png|gif|svg)$/,
+                use: [{
+                        loader: "url-loader",
+                        options: {
+                            limit: 40000
+                        }
                     },
                     "image-webpack-loader"
                 ]
@@ -48,7 +51,13 @@ const config = {
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: "async"
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            // include all types of chunks
+            chunks: 'all'
+        }
+    }
 }
 
 module.exports = config;

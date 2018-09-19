@@ -6,10 +6,10 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import _ from "lodash";
-import { PageLoader } from "./page_loader";
-import { BackButton } from "./back_button";
 
-import { ImageLoader } from "./image-loader";
+import PageLoader from "./page_loader";
+import BackButton from "./back_button";
+import ImageLoader from "./image-loader";
 
 class GalleryReader extends Component {
     constructor(props) {
@@ -175,6 +175,9 @@ GalleryReader.propTypes = {
             id: PropTypes.string,
             page: PropTypes.string
         })
+    }),
+    history:PropTypes.shape({
+        push:PropTypes.func
     }),
     images: PropTypes.arrayOf(PropTypes.object),
     media_id: PropTypes.string,

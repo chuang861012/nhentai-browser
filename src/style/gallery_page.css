@@ -6,6 +6,9 @@
 
 .book-cover {
     width: 48%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .book-detail {
@@ -59,6 +62,7 @@
 
     .book-detail {
         padding-left: 0;
+        margin:0 1rem;
         margin-top: 1rem;
     }
 
@@ -79,31 +83,33 @@
 .img-container {
     display: flex;
     flex-wrap: wrap;
+    position:relative;
 }
 
-.img-box {
+.img-box{
+    height:300px;
+    width:200px;
+    display:flex;
+    align-items:center;
+    min-width: 200px;
     margin: .5rem;
+    justify-content:center;
 }
 
-.img-box>img {
+.img-box img {
     max-width: 200px;
     max-height: 300px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: #535c68;
 }
 
 @media (max-width:800px) {
     .img-container {
-        flex-direction: column;
+        width:85vw;
         align-items: center;
+        flex-wrap:nowrap;
+        overflow-Y:scroll;
     }
 
-    .img-box {
-        width: 80vw;
-    }
-
-    .img-box>img {
+    .img-box img {
         max-width: 100%;
         max-height: 100%;
     }

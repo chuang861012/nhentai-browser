@@ -4,7 +4,7 @@ import GalleryDetail from "../containers/gallery_detail";
 import GalleryImages from "../containers/gallery_images";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { BackButton } from "./back_button";
+import BackButton from "./back_button";
 
 export default class GalleryPage extends Component {
     constructor(props) {
