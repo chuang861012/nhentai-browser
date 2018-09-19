@@ -2,7 +2,16 @@ const request = require("request");
 
 function getBookById(id){
     return new Promise((resolve)=>{
-        request(`https://nhentai.net/api/gallery/${id}`,(err,res,body)=>{
+        request({
+            url:`https://nhentai.net/api/gallery/${id}`,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36"
+            }
+        },(err,res,body)=>{
+            console.log("statusCode:",res.statusCode);
+            if(err){
+                console.log("error:",err);
+            }
             resolve(body);
         });
     });
@@ -16,7 +25,16 @@ function getBooks(query=null,page=1){
         url = `https://nhentai.net/api/galleries/all?page=${page}&sort=date`;
     }
     return new Promise((resolve)=>{
-        return request(url,(err,res,body)=>{
+        return request({
+            url,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36"
+            }
+        },(err,res,body)=>{
+            console.log("statusCode:",res.statusCode);
+            if(err){
+                console.log("error:",err);
+            }
             resolve(body);
         });
     });
