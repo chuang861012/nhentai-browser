@@ -12,18 +12,16 @@ import "./style/index.css";
 
 ReactDOM.render(
     <Root>
-        <div>
-            <BrowserRouter>
-                <div>
-                    <NavBar />
-                    <Switch>
-                        <Route path="/g/:id/:page" component={GalleryReader} />
-                        <Route path="/g/:id" component={GalleryPage} />
-                        <Route path="/query/:query?/:page?" component={GalleryList} />
-                        <Route path="/:page?" component={GalleryList} />
-                    </Switch>
-                </div>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <div>
+                <NavBar />
+                <Switch>
+                    <Route path="/g/:id/:page" component={GalleryReader} />
+                    <Route path="/g/:id" component={GalleryPage} />
+                    <Route path="/query/:query?/:page?" component={GalleryList} />
+                    <Route path="/:page?" component={GalleryList} />
+                </Switch>
+            </div>
+        </BrowserRouter>
     </Root>
     , document.querySelector(".container"));
